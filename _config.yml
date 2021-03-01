@@ -22,7 +22,8 @@ title: Lucas Thevenard
 email: lucas.gomes@efgv.br
 description: >- # this means to ignore newlines until "baseurl:"
   Um repositório para arquivos relacionados a pesquisas acadêmicas. 
-  Voltado para a hospedagem de arquivos .html gerados por RMarkdown ou Jupyter Notebooks.
+  Voltado para a hospedagem de páginas criadas por RMarkdown 
+  ou Jupyter Notebooks.
 baseurl: "/pesquisa" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: lthevenard
