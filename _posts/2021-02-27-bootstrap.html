@@ -284,24 +284,17 @@ glimpse(base_recode)</code></pre>
 <p>Agora podemos passar nossa função e as colunas desejadas para a o modelo (<code>boot()</code>), indicando quantas amostras aleatórias serão criadas para testar desvios da proporção original. Vamos agregar os resultados em uma lista, aplicando a função <code>boot()</code> a cada variável de interesse. Em todos os casos, utilizaremos 1000 repetições (<code>R = 1000</code>).</p>
 <p><br /></p>
 <pre class="r"><code>apply_boot &lt;- function (input, tabela = base_recode, STAT = calc_prop, BOOT = boot) {
-   
    resultado &lt;- vector(&#39;list&#39;, (length(tabela) - 1))
-   
    for (i in seq_along(resultado)) { # &lt;- Aplicando o modelo Bootstrap a cada coluna
-      
       resultado[[i]] &lt;- BOOT(data = input,
                             statistic = STAT,
                             dados = tabela,
                             variavel = (i + 1),
                             R = 1000)
-      
    }
-   
    names(resultado) &lt;- names(tabela)[2:length(tabela)] # &lt;- Nomeando a lista com as colunas
-   
    resultado
 }
-
 boot_list &lt;- apply_boot(input = unique(base$Audiência))</code></pre>
 <p><br /></p>
 <p>Obtemos assim uma lista com os resultados do modelo. Podemos acessar dados gerais sobre cada resultado, ou a própria distribuição de repetições calculadas para cada variável e representá-las graficamente. Os exemplos a seguir mostram os resultados do modelo para a coluna <code>substância_sim</code>.</p>
@@ -334,7 +327,7 @@ names(ci_list) &lt;- names(boot_list)</code></pre>
 <li>proporção = indica qual proporção foi calculada (…sim = “Sim”, mais… = 1, neutro… = 0, menos… = -1),</li>
 <li>conf = nível de confiança adotado (95% em todos os casos),</li>
 <li>intervalo = intervalo para o nível de confiança adotado (inferior - superior),</li>
-<li>erro_padrão = o erro padrão das repetições geradas do modelo,</li>
+<li>erro_padrão = o erro padrão das repetições geradas pelo modelo,</li>
 <li>viés = o viés das repetições geradas pelo modelo.</li>
 </ul>
 <p><br /></p>
